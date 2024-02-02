@@ -4,3 +4,15 @@ node_modules
 src/counter.cairo
 .snfoundry_cache
 .DS_Store
+scarb-v2.5.3-x86_64-pc-windows-msvc.zip
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/bin/scarb-cairo-language-server.exe
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/bin/scarb-cairo-run.exe
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/bin/scarb-cairo-test.exe
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/bin/scarb-snforge-test-collector.exe
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/bin/scarb.exe
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/doc/LICENSE
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/doc/README.md
+scarb-v2.5.3-x86_64-pc-windows-msvc/scarb-v2.5.3-x86_64-pc-windows-msvc/doc/SECURITY.md
+Scarb.lock
+~/.asdf/
+Scarb.lock
