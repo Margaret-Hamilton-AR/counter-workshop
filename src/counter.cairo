@@ -7,15 +7,20 @@ trait ICounter<T> {
 #[starknet::contract]
 mod Counter {
     use super::ICounter;
+    use kill_switch::IKillSwitchDispatcher;
+    use starknet::ContractAddress;
 
     #[storage]
     struct Storage {
         counter: u32,
+        kill_switch: IKillSwitchDispatcher,
     }
 
     #[constructor]
-    fn constructor(ref self: ContractState, initial_counter_value: u32) {
+    fn constructor(ref self: ContractState, initial_counter_value: u32, kill_switch_address: ContractAddress) {
         self.counter.write(initial_counter_value);
+        let dispatcher = IKillSwitchDispatcher { contract_address: kill_switch_address };
+        self.kill_switch.write(dispatcher);
     }
 
     #[abi(embed_v0)]
@@ -30,4 +35,3 @@ mod Counter {
         }
     }
     }
-
