@@ -9,7 +9,7 @@ trait ICounter<T> {
 #[starknet::contract]
 mod Counter {
     use super::ICounter;
-    use kill_switch::IKillSwitchDispatcher;
+    use kill_switch::{IKillSwitchDispatcher, IKillSwitchDispatcherTrait};
     use starknet::ContractAddress;
     
     #[event]
@@ -43,19 +43,15 @@ mod Counter {
         }
 
         fn increase_counter(ref self: ContractState) {
-            let kill_switch_dispatch = self.kill_switch.read();
-            if (kill_switch_dispatch.is_active()) {
+            let is_active = self.kill_switch.read().is_active();
+            if is_active {
                 let actual_value = self.counter.read();
                 let new_counter = actual_value + 1;
                 self.counter.write(new_counter);
-                self.emit(CounterIncreased {new_counter})
+                self.emit(CounterIncreased {counter: new_counter})
 
             }
 
         }
     }
     }
-
-Implement an event named CounterIncreased which emits the current value of the counter.
-Emit this event when the counter variable has been successfully incremented.
-Events are custom data structures that are emitted by a contract. More information about Events can be found in Chapter 12.3.3 - Contract Events.
