@@ -7,7 +7,7 @@ trait ICounter<T> {
 #[starknet::contract]
 mod Counter {
     use super::ICounter;
-    use kill_switch::IKillSwitchDispatcher;
+    use kill_switch::{IKillSwitchDispatcher, IKillSwitchDispatcherTrait};
     use starknet::ContractAddress;
 
     #[storage]
@@ -30,8 +30,8 @@ mod Counter {
         }
 
         fn increase_counter(ref self: ContractState) {
-            let kill_switch_dispatch = self.kill_switch.read();
-            if (kill_switch_dispatch.is_active()) {
+            let is_active = self.kill_switch.read().is_active();
+            if is_active {
                 let actual_value = self.counter.read();
                 self.counter.write(actual_value + 1);
             }
